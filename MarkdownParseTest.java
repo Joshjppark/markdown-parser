@@ -68,6 +68,15 @@ public class MarkdownParseTest {
     }
 
     @Test
+    public void test6getLinks() {
+        try {
+            assertEquals(List.of("thislinkhas()parenthesis.com"), MarkdownParse.getLinks(Files.readString(Path.of("test6.md"))));
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    @Test
     public void test_file2getLinks() {
         try {
             assertEquals(List.of("https://something.com", "some-page.html"), MarkdownParse.getLinks(Files.readString(Path.of("test-file2.md"))));
