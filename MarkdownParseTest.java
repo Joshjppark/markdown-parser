@@ -133,7 +133,7 @@ public class MarkdownParseTest {
     @Test
     public void test_file9getLinks() {
         try {
-            assertEquals(List.of("this shoulnd't be here"), MarkdownParse.getLinks(Files.readString(Path.of("test-file8.md"))));
+            assertEquals(List.of(), MarkdownParse.getLinks(Files.readString(Path.of("test-file8.md"))));
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
