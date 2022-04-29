@@ -27,15 +27,39 @@ public class MarkdownParse {
             String link = markdown.substring(openParen + 1, closeParen);
             currentIndex = closeParen + 1;
 
-
             if(link.indexOf(".") != -1 && link.indexOf(" ") == -1){
                 // we found a link
+
+
             
                 // make sure it is not image link:
                 if(closeBracket < 0 || markdown.charAt(openBracket-1) == '!'){
                     continue;
                 }
                 toReturn.add(link);
+            }
+
+            else{
+                
+                while(link.indexOf(".") == -1 && link.indexOf(" ") == -1){
+                    closeParen = markdown.indexOf(")", currentIndex);
+                    if(closeParen < 0) break;
+                    link = markdown.substring(openParen + 1, closeParen);
+                    currentIndex = closeParen + 1;
+                }
+
+                if(link.indexOf(".") != -1 && link.indexOf(" ") == -1){
+                    // we found a link
+    
+    
+                
+                    // make sure it is not image link:
+                    if(closeBracket < 0 || markdown.charAt(openBracket-1) == '!'){
+                        continue;
+                    }
+                    toReturn.add(link);
+                }
+
             }
         }
         return toReturn;
