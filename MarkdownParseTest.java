@@ -12,7 +12,7 @@ public class MarkdownParseTest {
         assertEquals(2, 1+1); // checks that 2 == 1+1
     }
 
-
+    
     @Test
     public void testbasegetLinks() {
         try {
